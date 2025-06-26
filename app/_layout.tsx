@@ -1,5 +1,5 @@
 // app/_layout.tsx
-import '../global.css';
+import './global.css';  // Changed from '../global.css' to './global.css'
 import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { supabase } from '../lib/supabase';
