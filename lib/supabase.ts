@@ -2,7 +2,10 @@
 import 'react-native-url-polyfill/auto';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from '@env';
+
+// Temporary values - replace with your actual Supabase credentials
+const SUPABASE_URL = 'https://tniifvyippxkicojndyd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRuaWlmdnlpcHB4a2ljb2puZHlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA5MTIzMTYsImV4cCI6MjA2NjQ4ODMxNn0.3YEOVNgzdQIas_nERBizHqgMPusIIpuZJy-V8Kz8OAc';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {
@@ -13,7 +16,7 @@ export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   },
 });
 
-// Database types (you'll generate these from Supabase later)
+// Export types
 export interface Profile {
   id: string;
   username: string;
@@ -53,13 +56,4 @@ export interface Friendship {
   friend_id: string;
   status: 'pending' | 'accepted' | 'rejected';
   created_at: string;
-}
-
-export interface Chat {
-  id: string;
-  sender_id: string;
-  receiver_id: string;
-  message: string;
-  created_at: string;
-  read: boolean;
 }

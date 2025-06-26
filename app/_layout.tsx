@@ -1,9 +1,9 @@
 // app/_layout.tsx
+import '../global.css';
 import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { supabase } from '../lib/supabase';
 import { useStore } from '../store/useStore';
-import { Session } from '@supabase/supabase-js';
 
 export default function RootLayout() {
   const setSession = useStore((state) => state.setSession);
@@ -22,18 +22,13 @@ export default function RootLayout() {
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [setSession]);
 
   return (
     <Stack>
-      <Stack.Screen 
-        name="(auth)" 
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen 
-        name="(tabs)" 
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
 }
